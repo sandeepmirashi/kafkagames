@@ -12,8 +12,9 @@ public class KafkaMessagePublisher {
 
     @Autowired
     private KafkaTemplate<String, Object> template;
+
     public void sendMessageToTopic(String message){
-        CompletableFuture<SendResult<String, Object>> future =  template.send("mirashitech-demo2", message);
+        CompletableFuture<SendResult<String, Object>> future =  template.send("mirashitech-demo3", message);
 //        future.get() dont use this which blocking
         future.whenComplete((result, exception) ->{
                     if (exception == null) {
