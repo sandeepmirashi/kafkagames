@@ -1,4 +1,4 @@
-package com.mirashitech.service;
+package com.mirashitech.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -13,14 +13,14 @@ public class KafkaMessagePublisher {
     @Autowired
     private KafkaTemplate<String, Object> template;
 
-    public void sendMessageToTopic(String message){
-        CompletableFuture<SendResult<String, Object>> future =  template.send("mirashitech-demo3", message);
+    public void sendMessageToTopic(String message) {
+        CompletableFuture<SendResult<String, Object>> future = template.send("mirashitech-demo3", message);
 //        future.get() dont use this which blocking
-        future.whenComplete((result, exception) ->{
+        future.whenComplete((result, exception) -> {
                     if (exception == null) {
                         System.out.println("Sent message = [" + message + "] with offset=" +
                                 result.getRecordMetadata().offset());
-                    }else {
+                    } else {
                         System.out.println("Unable to send message = [ " + message + "] due to : " + exception.getMessage());
                     }
                 }

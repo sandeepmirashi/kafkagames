@@ -10,7 +10,7 @@ import org.springframework.kafka.core.KafkaAdmin;
 public class KafkaProducerConfig {
 
     @Bean
-    public NewTopic createTopic(){
+    public NewTopic createTopic() {
         return new NewTopic("mirashitech-demo3", 5, (short) 1);
     }
 }
