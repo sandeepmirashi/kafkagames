@@ -1,6 +1,7 @@
 package com.mirashitech.controller;
 
 import com.mirashitech.dto.Customer;
+import com.mirashitech.dto.User;
 import com.mirashitech.services.KafkaMessagePublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,7 @@ public class EventController {
     @GetMapping("/publish/{message}")
     public ResponseEntity<?> publishMessage(@PathVariable String message) {
         try {
-            for (int i = 0; i < 100000; i++) {
+            for (int i = 0; i < 100; i++) {
                 publisher.sendMessageToTopic(message + ":" + i);
             }
 
@@ -26,7 +27,11 @@ public class EventController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .build();
         }
+    }
 
+    @PostMapping("/publish/user")
+    public void publishUser(@RequestBody User user) {
+        publisher.sendEvents(user);
     }
 
     @PostMapping("/publish")
