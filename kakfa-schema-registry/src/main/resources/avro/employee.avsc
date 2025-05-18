@@ -1,0 +1,35 @@
+{
+  "namespace": "com.mirashitech.dto",
+  "type": "record",
+  "name": "Employee",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "firstName",
+      "type": "string"
+    },
+    {
+      "name": "middleName",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "lastName",
+      "type": "string"
+    },
+    {
+      "name": "emailId_changed",
+      "type": "string",
+      "default": ""
+    },
+    {
+          "name": "test",
+          "type": "string",
+          "default": ""
+    }
+
+  ]
+}
